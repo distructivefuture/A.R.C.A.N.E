@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: arcane-ai
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    healthCheckPath: /health
+    envVars:
+      - key: GROQ_API_KEY
+        value: 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
+      - key: GEMINI_API_KEY
+        value: AIzaSyBS3OKamOSz8sWT5DmUmMjT-4P8ZGpbCZA
+      - key: ELEVENLABS_KEY
+        value: sk_2366c420fdd5cc5126322b6c073919fb7a3288073ec40754
+      - key: ELEVENLABS_VOICE
+        value: ZT9u07TYPVl83ejeLakq
